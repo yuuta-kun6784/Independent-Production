@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Item;
+use App\Models\Type;
+use App\Models\User;
 
-class ItemController extends Controller
+
+class TypeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -19,21 +21,26 @@ class ItemController extends Controller
     }
 
     /**
-     * 商品一覧
+     * 種別一覧
      */
-    public function index()
+    public function typeIndex()
     {
-        // 商品一覧取得
-        $items = Item::all();
+        // 種別一覧取得
+        $types = Type::all();
 
-        return view('item.index', compact('items'));
+        return view('type.index', [
+            'types' => $types,
+        ]);
+
     }
 
     /**
-     * 商品登録
+     * 種別登録
      */
-    public function add(Request $request)
+    public function typeAdd(Request $request)
     {
+        $users = User::all();
+
         // POSTリクエストのとき
         if ($request->isMethod('post')) {
             // バリデーション
@@ -41,15 +48,19 @@ class ItemController extends Controller
                 'name' => 'required|max:100',
             ]);
 
-            // 商品登録
-            Item::create([
-                'user_id' => Auth::user()->id,
+            // 種別登録
+            Type::create([
+                // 'user_id' => Auth::user()->id,
                 'name' => $request->name,
-                'type' => $request->type,
-                'detail' => $request->detail,
             ]);
 
-            return redirect('/items');
+            return redirect('/types');
         }
+
+        return view('type.add', compact('users'));
     }
+
+
+
+
 }
