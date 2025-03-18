@@ -25,6 +25,9 @@ Route::prefix('items')->group(function () {
     Route::get('/', [App\Http\Controllers\ItemController::class, 'itemIndex']);
     Route::get('/itemAdd', [App\Http\Controllers\ItemController::class, 'itemAdd']);
     Route::post('/itemAdd', [App\Http\Controllers\ItemController::class, 'itemAdd']);
+    Route::get('/itemEdit/{id}', [App\Http\Controllers\ItemController::class, 'itemEdit']);
+    Route::post('/itemEdit/{id}', [App\Http\Controllers\ItemController::class, 'itemEdit']);
+    Route::post('/itemDelete', [App\Http\Controllers\ItemController::class, 'itemDelete']);
 });
 
 Route::prefix('types')->group(function () {

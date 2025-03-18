@@ -15,7 +15,7 @@
                     <div class="card-tools">
                         <div class="input-group input-group-sm">
                             <div class="input-group-append">
-                                <a href="{{ url('items/add') }}" class="btn btn-default">商品登録</a>
+                                <a href="{{ url('items/itemAdd') }}" class="btn btn-default">商品登録</a>
                             </div>
                         </div>
                     </div>
@@ -28,15 +28,33 @@
                                 <th>名前</th>
                                 <th>種別</th>
                                 <th>詳細</th>
+                                <th>操作</th>
+                                <th> </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($items as $item)
+                            @foreach ($items as $value)
                                 <tr>
-                                    <td>{{ $item->id }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->type }}</td>
-                                    <td>{{ $item->detail }}</td>
+                                    <td>{{ $value->id }}</td>
+                                    <td>{{ $value->name }}</td>
+                                    <td>
+                                        @foreach( $types as $type)
+                                            @if($value->type_id == $type->id)
+                                                {{ $type->name }}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td>{{ $value->detail }}</td>
+                                    <td><a href="items/itemEdit/{{$value->id}}">編集</a></td>
+                                    <td>
+                                        <form action="{{  url('items/itemDelete')  }}" method="POST"
+                                            onsubmit="return confirm('削除します。よろしいですか？');">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $value->id }}">
+                                            <input type="submit" value="削除" class="btn btn-danger">
+                                        </form>
+                                    </td>
+
                                 </tr>
                             @endforeach
                         </tbody>

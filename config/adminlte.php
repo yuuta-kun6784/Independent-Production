@@ -18,6 +18,11 @@ return [
     'title_prefix' => '',
     'title_postfix' => '',
 
+    'title' => '種別管理',
+    'title_prefix' => '',
+    'title_postfix' => '',
+
+
     /*
     |--------------------------------------------------------------------------
     | Favicon
@@ -69,6 +74,14 @@ return [
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => '商品管理',
+
+    'logo' => '<b>種別管理</b>',
+    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo_img_xl' => null,
+    'logo_img_xl_class' => 'brand-image-xs',
+    'logo_img_alt' => '種別管理',
+
 
     /*
     |--------------------------------------------------------------------------
@@ -295,6 +308,12 @@ return [
             'url'  => 'items',
             'icon' => 'fas fa-gamepad',
         ],
+        [
+            'text' => '種別一覧',
+            'url'  => 'types',
+            'icon' => 'fas fa-gamepad',
+        ],
+
 
         // AdminLTEデフォルト
         /*
