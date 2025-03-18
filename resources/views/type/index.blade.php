@@ -26,6 +26,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>名前</th>
+                                <th>操作</th>
                                 <th> </th>
                             </tr>
                         </thead>
@@ -34,7 +35,15 @@
                                 <tr>
                                     <td>{{ $value->id }}</td>
                                     <td>{{ $value->name }}</td>
-                                    <td><a href="/typeEdit/{{$value->id}}">編集</a></td>
+                                    <td><a href="types/typeEdit/{{$value->id}}">編集</a></td>
+                                    <td>
+                                        <form action="{{  url('types/typeDelete')  }}" method="POST"
+                                            onsubmit="return confirm('削除します。よろしいですか？');">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $value->id }}">
+                                            <input type="submit" value="削除" class="btn btn-danger">
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

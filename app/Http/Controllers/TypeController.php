@@ -39,8 +39,6 @@ class TypeController extends Controller
      */
     public function typeAdd(Request $request)
     {
-        $users = User::all();
-
         // POSTリクエストのとき
         if ($request->isMethod('post')) {
             // バリデーション
@@ -50,16 +48,50 @@ class TypeController extends Controller
 
             // 種別登録
             Type::create([
-                // 'user_id' => Auth::user()->id,
                 'name' => $request->name,
             ]);
 
             return redirect('/types');
         }
 
-        return view('type.add', compact('users'));
+        return view('type.add');
     }
 
+    /**
+     * 種別編集
+     */
+    public function typeEdit(Request $request, $id)
+    {
+        $types = Type::find($id);
+
+        // POSTリクエストのとき
+        if ($request->isMethod('post')) {
+            // バリデーション
+            $this->validate($request, [
+                'name' => 'required|max:100',
+            ]);
+
+            // 種別編集
+            $types->name = $request->name;
+            $types->save();
+
+            return redirect('/types');
+        }
+
+        return view('type.edit', compact('types'));
+    }
+
+    /**
+     * 種別削除
+     */
+    public function typeDelete(Request $request)
+    {
+        $types = Type::find($request->id);
+        $types->delete();
+
+        return redirect('/types');
+
+    }
 
 
 

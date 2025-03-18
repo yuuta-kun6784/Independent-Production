@@ -22,7 +22,16 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('items')->group(function () {
-    Route::get('/', [App\Http\Controllers\ItemController::class, 'index']);
-    Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
-    Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
+    Route::get('/', [App\Http\Controllers\ItemController::class, 'itemIndex']);
+    Route::get('/itemAdd', [App\Http\Controllers\ItemController::class, 'itemAdd']);
+    Route::post('/itemAdd', [App\Http\Controllers\ItemController::class, 'itemAdd']);
+});
+
+Route::prefix('types')->group(function () {
+    Route::get('/', [App\Http\Controllers\TypeController::class, 'typeIndex']);
+    Route::get('/typeAdd', [App\Http\Controllers\TypeController::class, 'typeAdd']);
+    Route::post('/typeAdd', [App\Http\Controllers\TypeController::class, 'typeAdd']);
+    Route::get('/typeEdit/{id}', [App\Http\Controllers\TypeController::class, 'typeEdit']);
+    Route::post('/typeEdit/{id}', [App\Http\Controllers\TypeController::class, 'typeEdit']);
+    Route::post('/typeDelete', [App\Http\Controllers\TypeController::class, 'typeDelete']);
 });
