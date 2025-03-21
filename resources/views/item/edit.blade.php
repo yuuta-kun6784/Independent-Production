@@ -3,7 +3,7 @@
 @section('title', '商品編集・削除')
 
 @section('content_header')
-    <h1>商品登録</h1>
+    <h1>商品編集画面</h1>
 @stop
 
 @section('content')
@@ -20,7 +20,6 @@
 
 <body>
     <div style="width: 500px; margin: 100px auto;">
-        <h1 class="text-center" style="margin-bottom: 50px;">商品編集画面 (登録者:{{$users->name}})</h1>
         <form action="{{ url('items/itemEdit/' . $items->id) }}" method="POST">
             @csrf
             <div class="mb-3">
