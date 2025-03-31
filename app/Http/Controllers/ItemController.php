@@ -49,7 +49,7 @@ class ItemController extends Controller
             $this->validate($request, [
                 'name' => 'required|max:100',
                 'type' => 'required|exists:types,id',
-                'detail' => 'required',
+                'detail' => 'required|max:100',
             ]);
 
             // 商品登録
@@ -83,7 +83,7 @@ class ItemController extends Controller
             $this->validate($request, [
                 'name' => 'required|max:100',
                 'type' => 'required|exists:types,id',
-                'detail' => 'required',
+                'detail' => 'required|max:100',
             ]);
 
             // 商品編集
