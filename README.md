@@ -1,43 +1,30 @@
-## 商品管理システム
+# 商品管理システム
 
-### 環境構築手順
+## 概要
+このシステムでは、店舗で扱う商品の管理を行うことができます。
+商品の新規登録から編集、削除を行うことができ、各商品の情報を一元化し管理することが目的です。
 
-* Gitクローン
-* .env.example をコピーして .env を作成
-* MySQLのデータベース作成（名前：item_management）
-* Macの場合 .env の DB_PASSWORD を root に修正（Windowsは修正不要）
+## 主な機能
+- ログイン・ログアウト機能
+- 商品一覧画面
+- 商品新規登録、編集、削除機能
+- 種別一覧画面
+- 種別新規登録、編集、削除機能
 
-    ```INI
-    DB_PASSWORD=root
-    ```
+## 開発環境
+```
+PHP 8.4.5
+MySQL 14.14
+Laravel 10.48.29
+```
 
-* APP_KEY生成
+## 設計書
+[設計書ページへ](https://drive.google.com/drive/folders/1SdRsd2VXMuM1BYR6Rv5Y4irOsQR0JleH?q=sharedwith:public%20parent:1SdRsd2VXMuM1BYR6Rv5Y4irOsQR0JleH)
 
-    ```console
-    php artisan key:generate
-    ```
-
-* Composerインストール
-
-    ```console
-    composer install
-    ```
-
-* フロント環境構築
-
-    ```console
-    npm ci
-    npm run build
-    ```
-
-* マイグレーション
-
-    ```console
-    php artisan migrate
-    ```
-
-* 起動
-
-    ```console
-    php artisan serve
-    ```
+## システム閲覧
+[アプリケーションページへ](https://dashboard.heroku.com/apps/item-management-yamada)
+### テストアカウント情報
+```
+メールアドレス　new1@example.com
+パスワード　12345678
+```
